@@ -1,0 +1,19 @@
+{
+  "name": "chatlog-ghpages",
+  "version": "0.0.0",
+  "authors": [
+    "hxgdzyuyi <hxgdzyuyi@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "underscore": "~1.7.0"
+  }
+}

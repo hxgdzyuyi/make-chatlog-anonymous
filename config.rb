@@ -53,7 +53,15 @@ set :js_dir, 'javascripts'
 
 set :images_dir, 'images'
 
-# Build-specific configuration
+def gulp_command!
+  ::IO.popen('$(npm bin)/gulp webpack', 'r') do |pipe|
+    while buf = pipe.gets
+      without_newline = buf.sub(/\n$/,'')
+      logger.info "== External: #{without_newline}" if without_newline.length > 0
+    end
+  end
+end
+
 configure :build do
   # For example, change the Compass output style for deployment
   # activate :minify_css
@@ -69,4 +77,9 @@ configure :build do
 
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
+  gulp_command!
+end
+
+configure :development do
+  gulp_command!
 end

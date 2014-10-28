@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+body {
+  font: 16px 'Helvetica Neue', Helvetica, Arial;
+  background: #eaeaea;
+}
+
+header {
+  padding: 0 30px;
+  text-shadow: -1px -1px rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.left-col, .right-col {
+  display: inline-block;
+  width: 48%;
+  box-sizing: border-box;
+  padding: 10px;
+  vertical-align: top;
+}
+
+.chatlog-input-wrapper {
+  .chatlog-input {
+    border: none;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 16px;
+    box-shadow: none;
+  }
+}

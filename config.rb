@@ -62,6 +62,10 @@ def gulp_command!
   end
 end
 
+activate :deploy do |deploy|
+  deploy.method = :git
+end
+
 configure :build do
   # For example, change the Compass output style for deployment
   # activate :minify_css

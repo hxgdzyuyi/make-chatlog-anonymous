@@ -26,12 +26,13 @@ function createGetLogName(anonymousNames) {
   }
 }
 
-function makeChatlogAnonymous(logs) {
+function makeChatlogFormat(logs, options) {
   var container = $('<div>')
     , getLogName = createGetLogName(anonymousNames)
   $.each(logs, function(idx, log) {
     var para = $('<p>')
-    para.text('【' + getLogName(log.name) + '】：'
+      , logName = options.anonymous ? getLogName(log.name) : log.name
+    para.text('【' + $.trim(logName) + '】：'
       + log.content)
     container.append(para)
   })
@@ -42,6 +43,9 @@ function makeChatlogAnonymous(logs) {
 $(function() {
   var logInput = $('.chatlog-input')
     , anonymousContainer = $('.anonymous-chatlog')
+    , anonymousCheckbox = $('input[name=anonymous]')
+    , options = { anonymous: anonymousCheckbox.prop('checked') }
+  console.log(anonymousCheckbox)
 
   function logInputChanged(e) {
     var val = logInput.val()
@@ -52,9 +56,15 @@ $(function() {
         .text('发生了奇怪的错误')
     }
     anonymousContainer
-      .html(makeChatlogAnonymous(chatlogResult && chatlogResult.logs))
+      .html(makeChatlogFormat(chatlogResult && chatlogResult.logs
+        , options))
 
   }
+
+  anonymousCheckbox.change(function() {
+    options.anonymous = anonymousCheckbox.prop('checked')
+    logInputChanged()
+  })
 
   logInput.on('input', logInputChanged)
   logInputChanged()

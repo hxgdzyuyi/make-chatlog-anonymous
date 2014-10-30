@@ -10881,6 +10881,7 @@
 	, '%H:%M:%S'
 	, '%y-%m-%d %p%h:%M:%S'
 	, '%y/%m/%d %h:%M:%S'
+	, '%m/%d/%y, %h:%M:%S %p'
 	]
 
 	var patterns = _.chain(patternStrings)
@@ -10897,7 +10898,7 @@
 	        .replace(/(%H|%h)/g, '([0-2]?[0-9])')
 	        .replace(/%y/g, '([0-9]{1,4})')
 	        .replace(/(%m|%d)/g, '([0-9]{1,2})')
-	        .replace(/%p/g, '(上午|下午|AM.|PM.)')
+	        .replace(/%p/g, '(上午|下午|AM.|PM.|PM|AM)')
 	      , 'i')
 
 	    return pattern
